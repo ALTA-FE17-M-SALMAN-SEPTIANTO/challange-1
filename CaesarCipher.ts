@@ -1,6 +1,6 @@
 /** @format */
 
-function caesarCipher(offset: number, input: string): string {
+function caesarCipher(offset: Array<number>, input: Array<string>): string {
   const panjang = 26;
   const result = [];
 
