@@ -1,28 +1,27 @@
-/** @format */
-
-function ubahHuruf(sentence) {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const shiftedAlphabet = "KLMNOPQRSTUVWXYZABCDEFGHIJ";
-
-  // Membuat objek untuk memetakan setiap huruf dengan huruf yang digeser
-  const alphabetMap = {};
-  for (let i = 0; i < alphabet.length; i++) {
-    alphabetMap[alphabet[i]] = shiftedAlphabet[i];
+function ubahHuruf(sentence: string): string {
+    const alphabet: Record<string, string> = {}; 
+    const abjad: string[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+    const abjad2: string[] = "KLMNOPQRSTUVWXYZABCDEFGHIJ".split('');
+  
+    // memlakukan looping untuk mapping data abjad
+    for (let i = 0; i < abjad.length; i++) {
+      alphabet[abjad[i]] = abjad2[i];
+    }
+  
+    // merubah setiap huruf kedalam sebuah kalimat
+    const encryptedkata = sentence
+      .toUpperCase()
+      .split('')
+      .map((char: string) => (alphabet[char] ? alphabet[char] : char))
+      .join('');
+  
+    return encryptedkata;
   }
-
-  // Mengubah setiap huruf dalam kalimat
-  const encryptedSentence = sentence
-    .toUpperCase()
-    .split("")
-    .map((char) => (alphabetMap[char] ? alphabetMap[char] : char))
-    .join("");
-
-  return encryptedSentence;
-}
-
-// Test Cases
-console.log(ubahHuruf("SEPULSA OKE")); // Output: COZEVCK YUO
-console.log(ubahHuruf("ALTERRA ACADEMY")); // Output: KVDOBBK KMKNOWI
-console.log(ubahHuruf("INDONESIA")); // Output: SXNYXOCSK
-console.log(ubahHuruf("GOLANG")); // Output: QYVKXQ
-console.log(ubahHuruf("PROGRAMMER")); // Output: ZBYQBKWWOB
+  
+  // Test Cases
+  console.log(ubahHuruf("SEPULSA OKE"));     // Output: COZEVCK YUO
+  console.log(ubahHuruf("ALTERRA ACADEMY")); // Output: KVDOBBK KMKNOWI
+  console.log(ubahHuruf("INDONESIA"));       // Output: SXNYXOCSK
+  console.log(ubahHuruf("GOLANG"));          // Output: QYVKXQ
+  console.log(ubahHuruf("PROGRAMMER"));      // Output: ZBYQBKWWOB
+  
